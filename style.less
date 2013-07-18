@@ -1,0 +1,404 @@
+/*  
+Theme Name: Mosaic Child Theme
+Theme URI: http://support.8bit.io/entries/379992-customization-mosaic-standard-theme-2-0
+Version: Preview 3
+Description: This is a child theme for Standard Theme 3
+Author: Jason Bradley
+Author URI: http://everchangingmedia.com
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Template: standard
+*/
+
+/* ------------------------------------------------------------------------ Import Standard Styles */
+
+@import url( '../../standard/style.css' );
+
+/* ------------------------------------------------------------------------ Customizations */
+
+//BEGIN LESS
+//Colors
+@white: #fff;
+@black: #000;
+@light-gray: #eee;
+@gray: #f0f0f0;
+@dark-gray: #999;
+@darkest-gray: #333;
+@light-blue-green: #578691;
+@dark-blue-green: #0d3b49;
+@mustard: #d3b34e;
+@light-yellow: #fdf6c7;
+@yellow: #f0f46a;
+
+//Variables
+@body-text-color: @darkest-gray;
+
+@link-color: @light-blue-green;
+@link-color-hover: @dark-blue-green;
+
+@site-title-color: @white;
+@site-title-color-hover: @light-gray;
+@site-description-color: @white;
+@text-shadow-color: @black;
+
+@nav-link-color: @white;
+@nav-link-color-hover: @yellow;
+@nav-link-color-active: @nav-link-color-hover;
+@nav-dropdown-link-color: @light-blue-green;
+@nav-dropdown-link-color-hover: @dark-blue-green;
+@nav-bar-background-color: @dark-blue-green;
+
+@content-background-color: @white;
+@blockquote-background-color: @gray;
+@code-color: @black;
+
+@post-title-color: @black;
+@post-meta-color: @black; 
+
+@post-format-quote-background-color: @light-blue-green;
+@post-format-link-background-color-top: @light-blue-green;
+@post-format-link-background-color-bottom: @dark-blue-green;
+
+@pager-background-color: transparent;
+@pager-text-color: @dark-gray;
+@pager-background-color-hover: @light-blue-green;
+@pager-text-color-hover: @white;
+
+@widget-list-link-color: @light-blue-green;
+@widget-list-link-color-hover: @dark-blue-green;
+
+@activity-tab-background-color-top: @light-blue-green;
+@activity-tab-background-color-bottom: @dark-blue-green;
+@activity-tab-background-color-active-top: @white;
+@activity-tab-background-color-active-bottom: @white;
+@activity-tab-link-color: @white;
+@activity-tab-link-color-hover: @yellow;
+@activity-tab-link-color-active: @black;
+@activity-widget-list-link-color: @light-blue-green;
+@activity-widget-list-link-color-hover: @dark-blue-green;
+
+@border-color: @gray;
+
+@footer-background-color: @light-blue-green;
+@footer-widget-title-color: @light-yellow;
+@footer-widget-list-link-color: @white;
+@footer-text-widget-text-color: @white;
+
+@subfloor-background-color: @dark-blue-green;
+@subfloor-credit-color: @white;
+@subfloor-credit-link-color: @white;
+@subfloor-credit-link-color-hover: @yellow;
+
+@input-text-focus-color-r: 87;
+@input-text-focus-color-g: 134;
+@input-text-focus-color-b: 145;
+
+//Mixins
+.rounded-corners(@radius: 4px) {
+	border-radius: @radius;
+	-moz-border-radius: @radius;
+	-webkit-border-radius: @radius;
+}
+
+.gradient-background-fill(@from-color: @white, @to-color: @black) {
+	background-color: @from-color;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(@from-color), to(@to-color));
+	background-image: -webkit-linear-gradient(top, @from-color, @to-color);
+	background-image: -moz-linear-gradient(top, @from-color, @to-color);
+	background-image: -o-linear-gradient(top, @from-color, @to-color);
+	background-image: -ms-linear-gradient(top, @from-color, @to-color);
+	background-image: linear-gradient(top, @from-color, @to-color);
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='@from-color', EndColorStr='@to-color');
+}
+
+.gradient-background-fill-important(@from-color: @white, @to-color: @black) {
+	background-color: @from-color !important;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(@from-color), to(@to-color)) !important;
+	background-image: -webkit-linear-gradient(top, @from-color, @to-color) !important;
+	background-image: -moz-linear-gradient(top, @from-color, @to-color) !important;
+	background-image: -o-linear-gradient(top, @from-color, @to-color) !important;
+	background-image: -ms-linear-gradient(top, @from-color, @to-color) !important;
+	background-image: linear-gradient(top, @from-color, @to-color) !important;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='@from-color', EndColorStr='@to-color') !important;
+}
+
+.no-shadow() {
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+.to-uppercase() {
+	text-transform: uppercase;
+}
+
+.no-underline() {
+	text-decoration: none;
+}
+// END LESS
+
+/* Body */
+body { 
+	background: url(images/BG.jpg); 
+	font: 14px Georgia, Times, Serif; 
+	line-height: 1.5; 
+	color: @body-text-color;
+}
+
+a { 
+	color: @link-color;
+	.no-underline();
+	&:hover { 
+		color: @link-color-hover; 
+		.no-underline();
+	}
+}
+
+#wrapper .container {
+	background: @content-background-color;
+	.rounded-corners();
+	padding: 10px;
+}
+
+/* Header */
+#site-title { 
+	a { 
+		color: @site-title-color; 
+		font-size: 58px; 
+		.to-uppercase(); 
+		text-shadow: 0 0 20px @text-shadow-color;
+		line-height: 0; 
+		margin-top: 20px; 
+		.no-underline();
+		&:hover { 
+			.no-underline();
+			color: @site-title-color-hover;
+		}
+	}
+
+}
+
+#site-description { 
+	color: @site-description-color; 
+	font-size: 14px; 
+	.to-uppercase(); 
+	text-shadow: 0 0 20px @text-shadow-color;
+	line-height: 0; 
+	margin-top: 20px; 
+	.no-underline();
+}
+
+/* Navigation */
+.navbar {
+	.nav {
+		> li > a {
+			color: @nav-link-color;
+			.to-uppercase();
+			&:hover {
+				background: none;
+				color: @nav-link-color-hover;
+				.no-underline();
+			}
+	
+		}
+	}
+	.dropdown-menu a {
+		color: @nav-dropdown-link-color;
+		.to-uppercase();
+		&:hover {
+			color: @nav-dropdown-link-color-hover;
+		}
+	}
+}
+
+.navbar .nav .active > a,
+.navbar .nav .active > a:hover {
+  color: @nav-link-color-active;
+  .no-underline();
+  background-color: none;
+  background: none;
+}
+
+.navbar-inner, .navbar .fill {
+	background-color: @nav-bar-background-color;
+	background-image: none;
+	filter: none;
+}
+
+/* Post */
+.post-title {
+	color: @post-title-color;
+}
+
+.post-meta {
+	color: @post-meta-color;
+	border-top: none;
+}
+
+.post, #comments, #pings, #no-comments, #respond {
+	.no-shadow();
+	border-bottom: solid 1px @border-color;
+}
+
+.post-header {
+	border-bottom: none;
+}
+
+.post.format-quote .post-header {
+	background-color: @post-format-quote-background-color;
+}
+
+.post.format-link .post-header {
+	.gradient-background-fill(@post-format-link-background-color-top, @post-format-link-background-color-bottom);
+}
+
+.breadcrumb {
+	background: none;
+	border: none;
+}
+
+blockquote {
+	background: @blockquote-background-color;
+	padding: 20px;
+	.rounded-corners();
+}
+
+#commentform code {
+	color: @code-color;
+}
+
+.pager a:hover, .previous-page a:hover, .next-page a:hover {
+	color: @pager-text-color-hover;
+	background: @pager-background-color-hover;
+}
+
+/* Widgets */
+.widget {
+	ul li {
+		border-bottom: solid 1px @border-color;
+		a { 
+			color: @widget-list-link-color; 
+			transition: all .25s ease-in-out; 
+			-moz-transition: all .25s ease-in-out;
+			-webkit-transition: all .25s ease-in-out; 
+			&:hover { 
+				color: @widget-list-link-color-hover; 
+				.no-underline();
+			}
+		}
+	}
+	h4.widget-title {
+		.to-uppercase();
+	}
+}
+
+/* Influence Widget */
+.thumbnails li {
+	border-bottom: none !important;
+}
+
+.si-individual li {
+	border-bottom: none !important;
+}
+
+/* Activity Widget */
+.tabbed-widget {
+	.nav-tabs {
+		> li {
+			border-bottom: none !important;
+			> a {
+				.gradient-background-fill-important(@activity-tab-background-color-top, @activity-tab-background-color-bottom);
+				color: @activity-tab-link-color !important;
+				&:hover {
+					color: @activity-tab-link-color-hover !important;
+				}
+			}
+		}
+		> li.active > a {
+			.gradient-background-fill-important(@activity-tab-background-color-active-top, @activity-tab-background-color-active-bottom);
+			color: @activity-tab-link-color-active !important;
+		}
+	}
+	.tab-content ul li a {
+		color: @activity-widget-list-link-color !important;
+		&:hover {
+			color: @activity-widget-list-link-color-hover !important;
+			text-decoration: none !important;
+		}
+	}
+}
+
+/* Footer */
+#footer {
+	background: @footer-background-color;
+	.widget {
+		h4.widget-title {
+			color: @footer-widget-title-color;
+			.to-uppercase();
+		}
+		ul li {
+			border-bottom: none;
+			a {
+				color: @footer-widget-list-link-color;
+			}
+		}
+	}
+	.textwidget {
+		color: @footer-text-widget-text-color;
+	}
+}
+
+/* Sub-floor */
+#sub-floor {
+	background: @subfloor-background-color;
+	#credit {
+		color: @subfloor-credit-color;
+		.to-uppercase();
+		a {
+			color: @subfloor-credit-link-color;
+			.to-uppercase();
+			&:hover {
+				color: @subfloor-credit-link-color-hover;
+			}
+		}
+	}
+}
+
+/* Misc */
+input:focus,
+textarea:focus {
+  border-color: rgba(@input-text-focus-color-r, @input-text-focus-color-g, @input-text-focus-color-b, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  -webkit-box-shadow: inset 0 1px 1px rgba(@input-text-focus-color-r, @input-text-focus-color-g, @input-text-focus-color-b, 0.075), 0 0 8px rgba(@input-text-focus-color-r, @input-text-focus-color-g, @input-text-focus-color-b, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(@input-text-focus-color-r, @input-text-focus-color-g, @input-text-focus-color-b, 0.075), 0 0 8px rgba(@input-text-focus-color-r, @input-text-focus-color-g, @input-text-focus-color-b, 0.6);
+          box-shadow: inset 0 1px 1px rgba(@input-text-focus-color-r, @input-text-focus-color-g, @input-text-focus-color-b, 0.075), 0 0 8px rgba(@input-text-focus-color-r, @input-text-focus-color-g, @input-text-focus-color-b, 0.6);
+}
+
+/* ------------------------------------------------------------------------ Media Queries */
+
+/* Smartphones */
+@media (max-width: 480px) {
+
+}
+
+/* Tablet and Mobile */
+@media (max-width: 979px) {	
+			
+}
+
+/* Mobile to Tablet */
+@media only screen and (max-width: 767px) {
+	
+}
+
+/* Landscape Tablets */
+@media (min-width: 768px) and (max-width: 979px) {
+
+}
+
+/* Desktop */
+@media (min-width: 980px) {
+	
+}
+
